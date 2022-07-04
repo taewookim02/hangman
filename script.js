@@ -41,4 +41,27 @@ const armRight = draw(200, 200, 250, 230);
 
 // 8. LEGS
 const legLeft = draw(200, 295, 150, 350);
-const lefRight = draw(200, 295, 250, 350);
+const legRight = draw(200, 295, 250, 350);
+
+// TODO:
+////////////////////////////////
+// LOGIC
+
+// listen to keyboard input
+// display keyboard input
+// if right
+//// render characters in the right dashes
+// if all right
+//// render success popup
+
+// if wrong && count < 8
+//// render drawing
+//// render character at .wrong-char div
+// if count === 8
+//// render failure popup
+
+////////////////////////////////
+// VIEW
+
+// write success popup (try again button)
+// write failure popup (try again button)
