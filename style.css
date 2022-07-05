@@ -34,12 +34,12 @@ body {
 .canvas-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .wrong-char {
   font-size: 3.2rem;
-  width: 100%;
+  width: 40rem;
 }
 
 .dashes {

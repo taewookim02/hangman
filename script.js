@@ -15,6 +15,8 @@ const draw = function (x1, y1, x2, y2) {
   context.stroke();
 };
 
+////////////////////////////////////////////////////////
+
 // 1. HANGER BOTTOM HORIZONTAL
 const hangerBottomHorizontal = draw(50, 400, 300, 400);
 
