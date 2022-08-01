@@ -4,7 +4,8 @@
 const randomWord = 'husddslu';
 const canvas = document.querySelector('.canvas');
 const dashes = document.querySelector('.dashes');
-const wrongCharcters = document.querySelector('.wrong-chars');
+const wrongCharacters = document.querySelector('.wrong-chars');
+const wrongCharacter = document.querySelector('.wrong-char');
 const context = canvas.getContext('2d');
 
 // CONFIG
@@ -29,7 +30,11 @@ const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 // Listen to keyboard output
 document.addEventListener('keydown', function (e) {
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
-    console.log(e.key);
+    // Check if character in innerText
+    if (!wrongCharacter.innerText.includes(e.key)) {
+      // Append character to view
+      wrongCharacter.innerText += e.key;
+    }
   }
 });
 
