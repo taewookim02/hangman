@@ -1,0 +1,22 @@
+{
+  "name": "hangman",
+  "description": "hangman game",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taewookim02/hangman.git"
+  },
+  "author": "Taewoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taewookim02/hangman/issues"
+  },
+  "homepage": "https://github.com/taewookim02/hangman#readme",
+  "dependencies": {
+    "random-words": "^1.2.0"
+  }
+}

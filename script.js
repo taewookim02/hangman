@@ -1,4 +1,8 @@
 'use strict';
+// TODO:
+// import 'node_modules/random-words';
+https://bartsolutions.github.io/2019/12/27/use-npm-in-browser-js/
+// console.log(randomWords());
 
 const canvas = document.querySelector('.canvas');
 const context = canvas.getContext('2d');
@@ -50,6 +54,13 @@ const legRight = draw(200, 295, 250, 350);
 // LOGIC
 
 // listen to keyboard input
+
+document.addEventListener('keydown', function (e) {
+  if (e.key.length < 2) {
+    console.log(e.key);
+  }
+});
+
 // display keyboard input
 // if right
 //// render characters in the right dashes
@@ -67,9 +78,3 @@ const legRight = draw(200, 295, 250, 350);
 
 // write success popup (try again button)
 // write failure popup (try again button)
-
-document.addEventListener('keydown', function (e) {
-  if (e.key.length < 2) {
-    console.log(e.key);
-  }
-});
