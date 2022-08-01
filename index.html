@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <script type="module" defer src="script.js"></script>
+  <!-- <script defer src="bundle.js"></script> -->
+  <script defer src="script.js"></script>
 
   <title>Hangman</title>
 </head>
@@ -17,13 +18,15 @@
 <body>
   <div class="container">
     <div class="alphabets">
-      <h1 class="heading-primary">Guess your words!</h1>
+      <h1 class="heading-primary">Type your letters!</h1>
     </div>
     <div class="canvas-container">
       <canvas class="canvas" height="450" width="400"></canvas>
-      <div class="wrong-char">ABC</div>
+      <div class="wrong-chars">
+        <p>&nbsp;</p>
+      </div>
     </div>
-    <div class="output"><span class="dashes">____</span></div>
+    <div class="output"><span class="dashes">&nbsp;</span></div>
   </div>
 </body>
 

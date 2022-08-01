@@ -1,10 +1,10 @@
 'use strict';
-// TODO:
-// import 'node_modules/random-words';
-https://bartsolutions.github.io/2019/12/27/use-npm-in-browser-js/
-// console.log(randomWords());
 
+// const randomWord = require('random-words');
+const randomWord = 'husddslu';
 const canvas = document.querySelector('.canvas');
+const dashes = document.querySelector('.dashes');
+const wrongCharcters = document.querySelector('.wrong-chars');
 const context = canvas.getContext('2d');
 
 // CONFIG
@@ -20,6 +20,18 @@ const draw = function (x1, y1, x2, y2) {
 };
 
 ////////////////////////////////////////////////////////
+
+// Display _ _ _ _ based on the length of random word
+randomWord.split('').forEach(_ => (dashes.innerText += '_'));
+
+// Regular expression for alphabets
+const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
+// Listen to keyboard output
+document.addEventListener('keydown', function (e) {
+  if (e.key.length < 2 && alphabetRegex.test(e.key)) {
+    console.log(e.key);
+  }
+});
 
 // 1. HANGER BOTTOM HORIZONTAL
 const hangerBottomHorizontal = draw(50, 400, 300, 400);
@@ -49,17 +61,10 @@ const armRight = draw(200, 200, 250, 230);
 const legLeft = draw(200, 295, 150, 350);
 const legRight = draw(200, 295, 250, 350);
 
-// TODO:
 ////////////////////////////////
 // LOGIC
 
 // listen to keyboard input
-
-document.addEventListener('keydown', function (e) {
-  if (e.key.length < 2) {
-    console.log(e.key);
-  }
-});
 
 // display keyboard input
 // if right
