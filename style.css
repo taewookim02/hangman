@@ -42,9 +42,15 @@ body {
   font-size: 5rem;
 }
 
+.wrong-chars {
+  display: block;
+  width: 40%;
+  word-wrap: break-word;
+}
 .wrong-char {
   font-size: 3.2rem;
   width: 40rem;
+  letter-spacing: 3rem;
 }
 
 .dashes {

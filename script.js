@@ -1,7 +1,7 @@
 'use strict';
 
 // const randomWord = require('random-words');
-const randomWord = 'husddslu';
+const randomWord = 'screen';
 const canvas = document.querySelector('.canvas');
 const dashes = document.querySelector('.dashes');
 const wrongCharacters = document.querySelector('.wrong-chars');
@@ -21,22 +21,28 @@ const draw = function (x1, y1, x2, y2) {
 };
 
 ////////////////////////////////////////////////////////
-
+console.log(randomWord);
 // Display _ _ _ _ based on the length of random word
-randomWord.split('').forEach(_ => (dashes.innerText += '_'));
+randomWord.split('').forEach(el => (dashes.innerText += '_'));
 
+// WRONG STATE
 // Regular expression for alphabets
 const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 // Listen to keyboard output
 document.addEventListener('keydown', function (e) {
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
     // Check if character in innerText
+    // if (!wrongCharacter.innerText.includes(e.key)) {
     if (!wrongCharacter.innerText.includes(e.key)) {
       // Append character to view
       wrongCharacter.innerText += e.key;
     }
   }
+  // TODO: Guard clausing
 });
+
+// TODO:
+// CORRECT STATE
 
 // 1. HANGER BOTTOM HORIZONTAL
 const hangerBottomHorizontal = draw(50, 400, 300, 400);
