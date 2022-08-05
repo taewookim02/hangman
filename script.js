@@ -30,9 +30,10 @@ const dashesWordHelperList = dashes.firstChild.data.split('');
 
 ////////////////////////////////////////////////////////
 
-// Listen to keyboard, check if they are Alphabets
-document.addEventListener('keydown', function (e) {
+const main = function (e) {
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
+    if (!dashes.innerText.includes('_')) return;
+
     if (wordList.indexOf(e.key) > -1) {
       console.log('Success');
       // replace all dashes that contains the e.key using index
@@ -73,13 +74,19 @@ document.addEventListener('keydown', function (e) {
         case 7:
           draw(200, 200, 150, 230);
           draw(200, 200, 250, 230);
+          break;
         case 8:
           draw(200, 295, 150, 350);
           draw(200, 295, 250, 350);
+          // Temporary fix for ending the game
+          document.removeEventListener('keydown', main);
       }
     }
   }
-});
+};
+
+// Listen to keyboard, check if they are Alphabets
+document.addEventListener('keydown', main);
 
 // TODO:
 // CORRECT STATE
