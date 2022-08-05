@@ -32,18 +32,17 @@ const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 document.addEventListener('keydown', function (e) {
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
     // Check if character in innerText
-    // if (!wrongCharacter.innerText.includes(e.key)) {
     if (!wrongCharacter.innerText.includes(e.key)) {
       // Append character to view
       wrongCharacter.innerText += e.key;
+      // Use switch for drawing in canvas based on the length of wrongCharacter.innerText length.
     }
   }
-  // TODO: Guard clausing
 });
 
 // TODO:
 // CORRECT STATE
-
+/*
 // 1. HANGER BOTTOM HORIZONTAL
 const hangerBottomHorizontal = draw(50, 400, 300, 400);
 
@@ -71,7 +70,7 @@ const armRight = draw(200, 200, 250, 230);
 // 8. LEGS
 const legLeft = draw(200, 295, 150, 350);
 const legRight = draw(200, 295, 250, 350);
-
+ */
 ////////////////////////////////
 // LOGIC
 
@@ -94,3 +93,4 @@ const legRight = draw(200, 295, 250, 350);
 
 // write success popup (try again button)
 // write failure popup (try again button)
+// TODO: Guard clausing
