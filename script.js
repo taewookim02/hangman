@@ -49,7 +49,34 @@ document.addEventListener('keydown', function (e) {
     if (!wrongCharacter.innerText.includes(e.key)) {
       wrongCharacter.innerText += e.key;
 
-      draw(50, 400, 300, 400);
+      switch (wrongCharacter.innerText.length) {
+        case 1:
+          draw(50, 400, 300, 400);
+          break;
+        case 2:
+          draw(100, 100, 100, 400);
+          break;
+        case 3:
+          draw(100, 100, 200, 100);
+          break;
+        case 4:
+          draw(200, 100, 200, 150);
+          break;
+        case 5:
+          context.beginPath();
+          context.arc(200, 175, 25, 0, Math.PI * 2, true);
+          context.stroke();
+          break;
+        case 6:
+          draw(200, 200, 200, 295);
+          break;
+        case 7:
+          draw(200, 200, 150, 230);
+          draw(200, 200, 250, 230);
+        case 8:
+          draw(200, 295, 150, 350);
+          draw(200, 295, 250, 350);
+      }
     }
   }
 });
