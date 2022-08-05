@@ -3,10 +3,11 @@
 // const randomWord = require('random-words');
 const randomWord = 'screen';
 const canvas = document.querySelector('.canvas');
-const dashes = document.querySelector('.dashes');
+let dashes = document.querySelector('.dashes');
 const wrongCharacters = document.querySelector('.wrong-chars');
 const wrongCharacter = document.querySelector('.wrong-char');
 const context = canvas.getContext('2d');
+const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 
 // CONFIG
 const color = '#333';
@@ -23,25 +24,40 @@ const draw = function (x1, y1, x2, y2) {
 ////////////////////////////////////////////////////////
 console.log(randomWord);
 // Display _ _ _ _ based on the length of random word
-randomWord.split('').forEach(el => (dashes.innerText += '_'));
+const wordList = randomWord.split('');
+wordList.forEach(el => (dashes.innerText += '_'));
+const dashesWordHelperList = dashes.firstChild.data.split('');
 
-// WRONG STATE
-// Regular expression for alphabets
-const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
-// Listen to keyboard output
+////////////////////////////////////////////////////////
+
+// Listen to keyboard, check if they are Alphabets
 document.addEventListener('keydown', function (e) {
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
-    // Check if character in innerText
+    if (wordList.indexOf(e.key) > -1) {
+      console.log('Success');
+      // replace all dashes that contains the e.key using index
+      wordList.forEach((char, i) => {
+        if (char === e.key) {
+          // Modify _ _ _ _ dashes with char based on index
+          dashesWordHelperList[i] = char;
+          dashes.firstChild.data = dashesWordHelperList.join('');
+        }
+      });
+      return;
+    }
+
     if (!wrongCharacter.innerText.includes(e.key)) {
-      // Append character to view
       wrongCharacter.innerText += e.key;
-      // Use switch for drawing in canvas based on the length of wrongCharacter.innerText length.
+
+      draw(50, 400, 300, 400);
     }
   }
 });
 
 // TODO:
 // CORRECT STATE
+// Use switch for drawing in canvas based on the length of wrongCharacter.innerText length.
+
 /*
 // 1. HANGER BOTTOM HORIZONTAL
 const hangerBottomHorizontal = draw(50, 400, 300, 400);
