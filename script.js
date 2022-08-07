@@ -8,6 +8,22 @@ const wrongCharacters = document.querySelector('.wrong-chars');
 const wrongCharacter = document.querySelector('.wrong-char');
 const context = canvas.getContext('2d');
 const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
+// Popups
+const success = document.querySelector('.success');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-btn');
+
+// TODO:
+// Think about whether to write modal once and use insertAdjacentHTML
+// Or to write them all in the HTML in the first place
+// Add play again button in the main page too :D;
+// On load, keyboard animation to indicate the game is played with keyboards
+// Indicate how many choices left
+// Refactor code and directory
+
+// const closeModal = function() {
+
+// }
 
 // CONFIG
 const color = '#333';
