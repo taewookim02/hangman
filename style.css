@@ -28,6 +28,7 @@ body {
   border: 1px solid #444;
   border-radius: 10px;
   padding: 3rem;
+  position: relative;
 }
 
 .heading-primary {
@@ -58,6 +59,12 @@ body {
 .dashes {
   font-size: 8rem;
   letter-spacing: 3rem;
+}
+
+.container .success__btn {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* Modal */
