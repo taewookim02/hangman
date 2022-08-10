@@ -256,7 +256,6 @@ const randomWord =
 const container = document.querySelector('.container');
 const canvas = document.querySelector('.canvas');
 let dashes = document.querySelector('.dashes');
-const wrongCharacters = document.querySelector('.wrong-chars');
 const wrongCharacter = document.querySelector('.wrong-char');
 const playAgainBtn = document.querySelector('.btn');
 const keyboardInput = document.querySelector('.keyboard-input');
@@ -270,8 +269,7 @@ const iconKeyboard = document.querySelector('.icon-keyboard');
 const iconOverlay = document.querySelector('.icon--overlay');
 
 // CONFIG
-const color = '#333';
-context.strokeStyle = color;
+context.strokeStyle = '#333';
 context.lineWidth = 4;
 
 const draw = function (x1, y1, x2, y2) {
