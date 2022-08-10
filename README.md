@@ -2,10 +2,6 @@
 
 Simple game (I thought) but it was actually quite complicated.
 
-<!-- ## Preview
-
---- -->
-
 ![Preview image of the hangman game](src/img/preview.gif)
 \
 [https://hangman-taewoo.netlify.app/](https://hangman-taewoo.netlify.app/)
@@ -13,8 +9,6 @@ Simple game (I thought) but it was actually quite complicated.
 <br>
 
 ## Some of the challenges were:
-
----
 
 1. Had to draw the stick man with canvas API
 2. Things like "Displaying keyboard input on screen, and remove the rendering 0.8s later"
@@ -29,8 +23,6 @@ Despite the challenges, it was really fun to put some lo-fi music on and solve t
 &nbsp;
 
 ## What could be improved?
-
----
 
 - Using "display: none;" to hide divisions in modals, etc, caused it to be impossible to add fade-out animations.
 - Not the cleanest code, but figured that I'd move on and come back later after experiencing more projects.
