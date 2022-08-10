@@ -2,10 +2,13 @@
 
 // const randomWord = require('random-words');
 const randomWord = 'screen';
+// Query selectors
+const container = document.querySelector('.container');
 const canvas = document.querySelector('.canvas');
 let dashes = document.querySelector('.dashes');
 const wrongCharacters = document.querySelector('.wrong-chars');
 const wrongCharacter = document.querySelector('.wrong-char');
+const playAgainBtn = document.querySelector('.btn');
 const context = canvas.getContext('2d');
 const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 // Popups
@@ -35,6 +38,13 @@ const draw = function (x1, y1, x2, y2) {
   context.moveTo(x1, y1);
   context.lineTo(x2, y2);
   context.stroke();
+};
+
+const shakeFunction = function () {
+  container.classList.add('shaking-class');
+  setTimeout(() => {
+    container.classList.remove('shaking-class');
+  }, '820');
 };
 
 ////////////////////////////////////////////////////////
@@ -69,31 +79,39 @@ const main = function (e) {
       switch (wrongCharacter.innerText.length) {
         case 1:
           draw(50, 400, 300, 400);
+          shakeFunction();
           break;
         case 2:
           draw(100, 100, 100, 400);
+          shakeFunction();
           break;
         case 3:
           draw(100, 100, 200, 100);
+          shakeFunction();
           break;
         case 4:
           draw(200, 100, 200, 150);
+          shakeFunction();
           break;
         case 5:
           context.beginPath();
           context.arc(200, 175, 25, 0, Math.PI * 2, true);
           context.stroke();
+          shakeFunction();
           break;
         case 6:
           draw(200, 200, 200, 295);
+          shakeFunction();
           break;
         case 7:
           draw(200, 200, 150, 230);
           draw(200, 200, 250, 230);
+          shakeFunction();
           break;
         case 8:
           draw(200, 295, 150, 350);
           draw(200, 295, 250, 350);
+          shakeFunction();
           // Temporary fix for ending the game
           document.removeEventListener('keydown', main);
       }
@@ -103,6 +121,9 @@ const main = function (e) {
 
 // Listen to keyboard, check if they are Alphabets
 document.addEventListener('keydown', main);
+playAgainBtn.addEventListener('click', function () {
+  window.location.reload();
+});
 
 // TODO:
 // CORRECT STATE
