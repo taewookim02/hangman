@@ -26,7 +26,9 @@ Despite the challenges, it was really fun to put some lo-fi music on and solve t
 
 - Using "display: none;" to hide divisions in modals, etc, caused it to be impossible to add fade-out animations (or is it possible?).
 - Not the cleanest code, but figured that I'd move on and come back later after experiencing more projects.
-- Starting animation can get redundant when the user already knows to type the letters on the keyboard (UX issue).
-- If one gets the wrong letter, the container shakes, giving it some feedback. However, when the letter is right, no feedback is given (UX issue).
+- The stickman drawn is too square, whereas all other UI components are round (font, border-radius, etc).
+- Starting animation can get redundant when the user already knows to type the letters on the keyboard.
+- Wrong input makes the container shake, giving it some feedback. But no feedback when correct input given.
+- The app is non-responsive and does not consider playing in mobile environments.
 
 &nbsp;
