@@ -342,15 +342,25 @@ words.wordList = wordList;
 
 },{}],2:[function(require,module,exports){
 'use strict';
-// TODO: generate random words, use parcel to bundle
-// import 'random-words';
-// import 'regenerator-runtime/runtime'; // polifilling async await
-// https://bartsolutions.github.io/2019/12/27/use-npm-in-browser-js/
-// console.log(randomWords());
+
 const randomWords = require('random-words');
+
 console.log(randomWords());
+// Query selectors
+const container = document.querySelector('.container');
 const canvas = document.querySelector('.canvas');
+let dashes = document.querySelector('.dashes');
+const wrongCharacters = document.querySelector('.wrong-chars');
+const wrongCharacter = document.querySelector('.wrong-char');
+const playAgainBtn = document.querySelector('.btn');
 const context = canvas.getContext('2d');
+const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
+// Popups
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-btn');
+const iconKeyboard = document.querySelector('.icon-keyboard');
+const iconOverlay = document.querySelector('.icon--overlay');
 
 // CONFIG
 const color = '#333';
@@ -364,64 +374,135 @@ const draw = function (x1, y1, x2, y2) {
   context.stroke();
 };
 
+const shakeFunction = function () {
+  container.classList.add('shaking-class');
+  setTimeout(() => {
+    container.classList.remove('shaking-class');
+  }, '820');
+};
+
+////////////////////////////////////////////////////////
+console.log(randomWord);
+// Display _ _ _ _ based on the length of random word
+const wordList = randomWord.split('');
+wordList.forEach(el => (dashes.innerText += '_'));
+const dashesWordHelperList = dashes.firstChild.data.split('');
+
 ////////////////////////////////////////////////////////
 
-// 1. HANGER BOTTOM HORIZONTAL
-const hangerBottomHorizontal = draw(50, 400, 300, 400);
+const main = function (e) {
+  // Check if e.key is a letter AND e.key is an english alphabet using RegExp
+  if (e.key.length < 2 && alphabetRegex.test(e.key)) {
+    // Guard clausing to check if there are _ _ _ left in the dashes
+    if (!dashes.innerText.includes('_')) {
+      return;
+    }
 
-// 2. HANGER LEFT VERTICAL
-const hangerLeftVertical = draw(100, 100, 100, 400);
+    if (wordList.indexOf(e.key) > -1) {
+      // replace all dashes that contains the e.key using index
+      wordList.forEach((char, i) => {
+        if (char === e.key) {
+          // Modify _ _ _ _ dashes with char based on index
+          dashesWordHelperList[i] = char;
+          dashes.firstChild.data = dashesWordHelperList.join('');
+        }
+      });
 
-// 3. HANGER TOP HORIZONTAL
-const hangerTopHorizontal = draw(100, 100, 200, 100);
+      // If there are no _ _ _ dashes left, render success
+      if (!dashes.innerText.includes('_')) {
+        btnCloseModal.insertAdjacentHTML(
+          'afterend',
+          '<h1 class="heading-primary">🎉You Win!🎉</h1>'
+        );
+        modal.classList.toggle('hidden');
+        overlay.classList.toggle('hidden');
+        modal.style.opacity = '1';
+        // Stop listening to keyboard
+        document.removeEventListener('keydown', main);
+      }
+      return;
+    }
 
-// 4. HANGER TOP VERTICAL
-const hangerTopVertical = draw(200, 100, 200, 150);
+    // Guard clausing to check if the wrong character list already includes the alphabet or not
+    if (!wrongCharacter.innerText.includes(e.key)) {
+      // If the list doesn't include the alphabet, add e.key
+      wrongCharacter.innerText += e.key;
 
-// 5. HEAD
-context.beginPath();
-context.arc(200, 175, 25, 0, Math.PI * 2, true);
-context.stroke();
-
-// 6. BODY
-const body = draw(200, 200, 200, 295);
-
-// 7. ARMS
-const armLeft = draw(200, 200, 150, 230);
-const armRight = draw(200, 200, 250, 230);
-
-// 8. LEGS
-const legLeft = draw(200, 295, 150, 350);
-const legRight = draw(200, 295, 250, 350);
-
-// TODO:
-////////////////////////////////
-// LOGIC
-
-// listen to keyboard input
-
-document.addEventListener('keydown', function (e) {
-  if (e.key.length < 2) {
-    console.log(e.key);
+      // Rendering hangman based on 8 opportunities
+      switch (wrongCharacter.innerText.length) {
+        case 1:
+          draw(50, 400, 300, 400);
+          shakeFunction();
+          break;
+        case 2:
+          draw(100, 100, 100, 400);
+          shakeFunction();
+          break;
+        case 3:
+          draw(100, 100, 200, 100);
+          shakeFunction();
+          break;
+        case 4:
+          draw(200, 100, 200, 150);
+          shakeFunction();
+          break;
+        case 5:
+          context.beginPath();
+          context.arc(200, 175, 25, 0, Math.PI * 2, true);
+          context.stroke();
+          shakeFunction();
+          break;
+        case 6:
+          draw(200, 200, 200, 295);
+          shakeFunction();
+          break;
+        case 7:
+          draw(200, 200, 150, 230);
+          draw(200, 200, 250, 230);
+          shakeFunction();
+          break;
+        case 8:
+          draw(200, 295, 150, 350);
+          draw(200, 295, 250, 350);
+          shakeFunction();
+          // Render failure modal
+          btnCloseModal.insertAdjacentHTML(
+            'afterend',
+            '<h1 class="heading-primary">💥You Lose!💥</h1>'
+          );
+          modal.classList.remove('hidden');
+          overlay.classList.remove('hidden');
+          modal.style.opacity = '1';
+          // Stop listening to keyboard
+          document.removeEventListener('keydown', main);
+      }
+    }
   }
+};
+
+// Listen to keyboard, check if they are Alphabets
+document.addEventListener('keydown', main);
+playAgainBtn.addEventListener('click', function () {
+  window.location.reload();
+});
+// Close button
+btnCloseModal.addEventListener('click', function () {
+  modal.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
+});
+// Closing modal on overlay click
+overlay.addEventListener('click', function () {
+  modal.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
 });
 
-// display keyboard input
-// if right
-//// render characters in the right dashes
-// if all right
-//// render success popup
-
-// if wrong && count < 8
-//// render drawing
-//// render character at .wrong-char div
-// if count === 8
-//// render failure popup
-
-////////////////////////////////
-// VIEW
-
-// write success popup (try again button)
-// write failure popup (try again button)
+// Animate keyboard on page loading
+window.addEventListener('load', function () {
+  setTimeout(() => {
+    iconKeyboard.classList.add('hidden');
+    iconOverlay.classList.add('hidden');
+    console.log('HELOO');
+  }, '3000');
+});
 
 },{"random-words":1}]},{},[2]);
