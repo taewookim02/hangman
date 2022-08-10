@@ -16,7 +16,7 @@ Simple game (I thought) but it was actually quite complicated.
 4. Logic to check if the alphabet has already been entered before
 5. Logic to insert the alphabet in the corresponding dash ( \_ \_ \_ \_ )
 6. Utilizing guard clauses in the logic above (to try to make it more readable but not sure if it does)
-7. Module bundling issues with browserify
+7. Module bundling issues with Browserify
 
 Despite the challenges, it was really fun to put some lo-fi music on and solve them.
 \
@@ -24,9 +24,9 @@ Despite the challenges, it was really fun to put some lo-fi music on and solve t
 
 ## What could be improved?
 
-- Using "display: none;" to hide divisions in modals, etc, caused it to be impossible to add fade-out animations.
+- Using "display: none;" to hide divisions in modals, etc, caused it to be impossible to add fade-out animations (or is it possible?).
 - Not the cleanest code, but figured that I'd move on and come back later after experiencing more projects.
-- Starting animation can get annoying when the user already knows to type the letters on the keyboard.
-- If one gets the wrong letter, the container shakes, giving it some feedback. However, when the letter is right, no feedback is given (UX issues).
+- Starting animation can get redundant when the user already knows to type the letters on the keyboard (UX issue).
+- If one gets the wrong letter, the container shakes, giving it some feedback. However, when the letter is right, no feedback is given (UX issue).
 
 &nbsp;
