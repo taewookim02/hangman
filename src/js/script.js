@@ -259,6 +259,7 @@ let dashes = document.querySelector('.dashes');
 const wrongCharacters = document.querySelector('.wrong-chars');
 const wrongCharacter = document.querySelector('.wrong-char');
 const playAgainBtn = document.querySelector('.btn');
+const keyboardInput = document.querySelector('.keyboard-input');
 const context = canvas.getContext('2d');
 const alphabetRegex = new RegExp(/^[A-Za-z]*$/);
 // Popups
@@ -287,6 +288,11 @@ const shakeFunction = function () {
   }, '820');
 };
 
+const toggleModal = function () {
+  modal.classList.toggle('hidden');
+  overlay.classList.toggle('hidden');
+};
+
 ////////////////////////////////////////////////////////
 // Display _ _ _ _ based on the length of random word
 const wordList = randomWord.split('');
@@ -298,7 +304,12 @@ const dashesWordHelperList = dashes.firstChild.data.split('');
 const main = function (e) {
   // Check if e.key is a letter AND e.key is an english alphabet using RegExp
   if (e.key.length < 2 && alphabetRegex.test(e.key)) {
-    console.log(e.key);
+    // Displaying keyboard input on screen, and remove the rendering 0.8s later
+    keyboardInput.style.display = 'inline-block';
+    keyboardInput.innerText = e.key;
+    setTimeout(() => {
+      keyboardInput.style.display = 'none';
+    }, '800');
 
     // Guard clausing to check if there are _ _ _ left in the dashes
     if (!dashes.innerText.includes('_')) {
@@ -321,8 +332,7 @@ const main = function (e) {
           'afterend',
           '<h1 class="heading-primary">🎉You Win!🎉</h1>'
         );
-        modal.classList.toggle('hidden');
-        overlay.classList.toggle('hidden');
+        toggleModal();
         modal.style.opacity = '1';
         // Stop listening to keyboard
         document.removeEventListener('keydown', main);
@@ -377,8 +387,7 @@ const main = function (e) {
             'afterend',
             `<h1 class="heading-primary">💥You Lose!💥</h1> <p>The answer was: ${randomWord}</p>`
           );
-          modal.classList.remove('hidden');
-          overlay.classList.remove('hidden');
+          toggleModal();
           modal.style.opacity = '1';
           // Stop listening to keyboard
           document.removeEventListener('keydown', main);
@@ -393,15 +402,9 @@ playAgainBtn.addEventListener('click', function () {
   window.location.reload();
 });
 // Close button
-btnCloseModal.addEventListener('click', function () {
-  modal.classList.toggle('hidden');
-  overlay.classList.toggle('hidden');
-});
+btnCloseModal.addEventListener('click', toggleModal);
 // Closing modal on overlay click
-overlay.addEventListener('click', function () {
-  modal.classList.toggle('hidden');
-  overlay.classList.toggle('hidden');
-});
+overlay.addEventListener('click', toggleModal);
 
 // Animate keyboard on page load
 window.addEventListener('load', function () {
