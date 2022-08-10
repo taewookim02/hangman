@@ -10,7 +10,7 @@ Simple game (I thought) but it was actually quite complicated.
 
 ## Some of the challenges were:
 
-1. Had to draw the stick man with canvas API
+1. Drawing the stick man with canvas API
 2. Things like "Displaying keyboard input on screen, and remove the rendering 0.8s later"
 3. CSS Keyframes to add animations the way I want them to
 4. Logic to check if the keyboard input has already been entered before
