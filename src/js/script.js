@@ -279,12 +279,13 @@ const draw = function (x1, y1, x2, y2) {
   context.stroke();
 };
 
-const shakeFunction = function () {
-  container.classList.add('shaking-class');
+const shakeFunction = function (element) {
+  element.classList.add('shaking-class');
   setTimeout(() => {
-    container.classList.remove('shaking-class');
+    element.classList.remove('shaking-class');
   }, '820');
 };
+// dashes
 
 const toggleModal = function () {
   modal.classList.toggle('hidden');
@@ -298,6 +299,8 @@ wordList.forEach(el => (dashes.innerText += '_'));
 const dashesWordHelperList = dashes.firstChild.data.split('');
 
 ////////////////////////////////////////////////////////
+console.log(randomWord);
+//
 
 const main = function (e) {
   // Check if e.key is a letter AND e.key is an english alphabet using RegExp
@@ -319,8 +322,10 @@ const main = function (e) {
       wordList.forEach((char, i) => {
         if (char === e.key) {
           // Modify _ _ _ _ dashes with char based on index
+
           dashesWordHelperList[i] = char;
           dashes.firstChild.data = dashesWordHelperList.join('');
+          shakeFunction(dashes.firstChild.data);
         }
       });
 
@@ -347,39 +352,39 @@ const main = function (e) {
       switch (wrongCharacter.innerText.length) {
         case 1:
           draw(50, 400, 300, 400);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 2:
           draw(100, 100, 100, 400);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 3:
           draw(100, 100, 200, 100);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 4:
           draw(200, 100, 200, 150);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 5:
           context.beginPath();
           context.arc(200, 175, 25, 0, Math.PI * 2, true);
           context.stroke();
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 6:
           draw(200, 200, 200, 295);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 7:
           draw(200, 200, 150, 230);
           draw(200, 200, 250, 230);
-          shakeFunction();
+          shakeFunction(container);
           break;
         case 8:
           draw(200, 295, 150, 350);
           draw(200, 295, 250, 350);
-          shakeFunction();
+          shakeFunction(container);
           // Render failure modal
           btnCloseModal.insertAdjacentHTML(
             'afterend',
