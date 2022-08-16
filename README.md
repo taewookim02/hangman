@@ -1,5 +1,6 @@
 # Hangman
 
+<!--
 Simple hangman game
 
 ![Preview image of the hangman game](src/img/preview.gif)
@@ -32,3 +33,4 @@ Simple hangman game
 - The app is non-responsive and does not consider playing in mobile environments.
 
 &nbsp;
+ -->
