@@ -285,7 +285,6 @@ const shakeFunction = function (element) {
     element.classList.remove('shaking-class');
   }, '820');
 };
-// dashes
 
 const toggleModal = function () {
   modal.classList.toggle('hidden');
@@ -299,8 +298,11 @@ wordList.forEach(el => (dashes.innerText += '_'));
 const dashesWordHelperList = dashes.firstChild.data.split('');
 
 ////////////////////////////////////////////////////////
-console.log(randomWord);
 //
+
+// FIXME:
+// 1. if correct alphabets > 1, only one alphabet gets displayed
+// 2. no success state is rendered
 
 const main = function (e) {
   // Check if e.key is a letter AND e.key is an english alphabet using RegExp

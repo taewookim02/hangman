@@ -1,6 +1,6 @@
 # Hangman
 
-Simple game (I thought) but it was actually quite complicated.
+Simple hangman game
 
 ![Preview image of the hangman game](src/img/preview.gif)
 \
@@ -18,7 +18,6 @@ Simple game (I thought) but it was actually quite complicated.
 6. Utilizing guard clauses in the logic above (to try to make it more readable but not sure if it does)
 7. Module bundling issues with Browserify
 
-Despite the challenges, it was really fun to put some lo-fi music on and solve them.
 \
 &nbsp;
 
