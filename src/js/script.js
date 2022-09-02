@@ -296,13 +296,7 @@ const toggleModal = function () {
 const wordList = randomWord.split('');
 wordList.forEach(el => (dashes.innerText += '_'));
 const dashesWordHelperList = dashes.firstChild.data.split('');
-
 ////////////////////////////////////////////////////////
-//
-
-// FIXME:
-// 1. if correct alphabets > 1, only one alphabet gets displayed
-// 2. no success state is rendered
 
 const main = function (e) {
   // Check if e.key is a letter AND e.key is an english alphabet using RegExp
@@ -324,10 +318,8 @@ const main = function (e) {
       wordList.forEach((char, i) => {
         if (char === e.key) {
           // Modify _ _ _ _ dashes with char based on index
-
           dashesWordHelperList[i] = char;
           dashes.firstChild.data = dashesWordHelperList.join('');
-          shakeFunction(dashes.firstChild.data);
         }
       });
 
